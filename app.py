@@ -349,19 +349,23 @@ hr {
 ::-webkit-scrollbar-thumb { background: #1e2d4a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2d5c9e; }
 
-/* hide Streamlit branding but keep sidebar toggle */
-#MainMenu { visibility: hidden; }
-footer { visibility: hidden; }
-header { visibility: hidden; }
+/* hide Streamlit branding — sem esconder o header inteiro */
+#MainMenu { display: none !important; }
+footer { display: none !important; }
 
-/* Keep the sidebar collapse/expand button always visible */
+/* Esconde só o toolbar do header (deploy, share, etc), mas NÃO o botão da sidebar */
+[data-testid="stToolbar"] { display: none !important; }
+[data-testid="stDecoration"] { display: none !important; }
+[data-testid="stStatusWidget"] { display: none !important; }
+
+/* Botão de reabrir sidebar — sempre visível e estilizado */
 [data-testid="collapsedControl"] {
-    visibility: visible !important;
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     background-color: #0d1221 !important;
     border: 1px solid #1e2d4a !important;
     border-radius: 0 6px 6px 0 !important;
-    color: #7eb3ff !important;
     z-index: 9999 !important;
 }
 [data-testid="collapsedControl"]:hover {
@@ -369,6 +373,7 @@ header { visibility: hidden; }
     border-color: #3b82f6 !important;
 }
 [data-testid="collapsedControl"] svg {
+    color: #7eb3ff !important;
     fill: #7eb3ff !important;
 }
 
