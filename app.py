@@ -349,35 +349,20 @@ hr {
 ::-webkit-scrollbar-thumb { background: #1e2d4a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2d5c9e; }
 
-/* hide Streamlit branding — sem esconder o header inteiro */
+/* Esconde só o menu e footer — NÃO toca no header para preservar botão da sidebar */
 #MainMenu { display: none !important; }
 footer { display: none !important; }
 
-/* Esconde só o toolbar do header (deploy, share, etc), mas NÃO o botão da sidebar */
-[data-testid="stToolbar"] { display: none !important; }
-[data-testid="stDecoration"] { display: none !important; }
-[data-testid="stStatusWidget"] { display: none !important; }
-
-/* Botão de reabrir sidebar — sempre visível e estilizado */
+/* Estiliza o botão de reabrir sidebar */
 [data-testid="collapsedControl"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     background-color: #0d1221 !important;
-    border: 1px solid #1e2d4a !important;
-    border-radius: 0 6px 6px 0 !important;
-    z-index: 9999 !important;
-}
-[data-testid="collapsedControl"]:hover {
-    background-color: #111828 !important;
-    border-color: #3b82f6 !important;
 }
 [data-testid="collapsedControl"] svg {
     color: #7eb3ff !important;
     fill: #7eb3ff !important;
 }
 
-.block-container { padding-top: 1.5rem !important; }
+.block-container { padding-top: 0.5rem !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -791,12 +776,10 @@ for key, default in [
 # ─────────────────────────────────────────────
 # HEADER
 # ─────────────────────────────────────────────
-col_logo, col_spacer = st.columns([3, 7])
-with col_logo:
-    st.markdown("""
-    <div class="optionlab-header">OptionLab</div>
-    <div class="optionlab-sub">Calculadora de Derivativos · FGV EAESP</div>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<div class="optionlab-header">OptionLab</div>
+<div class="optionlab-sub">Calculadora de Derivativos · FGV EAESP</div>
+""", unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
