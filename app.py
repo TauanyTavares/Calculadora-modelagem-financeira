@@ -471,8 +471,6 @@ def monte_carlo(S, K, T, r, sigma, n_sims, n_steps, option_type='call', payoff_t
     dt = T / n_steps
     Z = np.random.standard_normal((n_sims, n_steps))
     increments = np.exp((r - 0.5 * sigma ** 2) * dt + sigma * np.sqrt(dt) * Z)
-    paths = np.cumprod(np.hstack([np.ones((n_sims, 1)) * S, increments * S[:, None] if False else increments], axis=1), axis=1)
-    # Fix: generate paths correctly
     paths = S * np.cumprod(np.hstack([np.ones((n_sims, 1)), increments]), axis=1)
     if payoff_type == 'european':
         S_T = paths[:, -1]
