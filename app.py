@@ -349,8 +349,29 @@ hr {
 ::-webkit-scrollbar-thumb { background: #1e2d4a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2d5c9e; }
 
-/* hide Streamlit branding */
-#MainMenu, footer, header { visibility: hidden; }
+/* hide Streamlit branding but keep sidebar toggle */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+header { visibility: hidden; }
+
+/* Keep the sidebar collapse/expand button always visible */
+[data-testid="collapsedControl"] {
+    visibility: visible !important;
+    display: flex !important;
+    background-color: #0d1221 !important;
+    border: 1px solid #1e2d4a !important;
+    border-radius: 0 6px 6px 0 !important;
+    color: #7eb3ff !important;
+    z-index: 9999 !important;
+}
+[data-testid="collapsedControl"]:hover {
+    background-color: #111828 !important;
+    border-color: #3b82f6 !important;
+}
+[data-testid="collapsedControl"] svg {
+    fill: #7eb3ff !important;
+}
+
 .block-container { padding-top: 1.5rem !important; }
 </style>
 """, unsafe_allow_html=True)
